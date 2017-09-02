@@ -11895,7 +11895,7 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Outline">Outline<a class="anchor-link" href="#Outline">&#182;</a></h1><h3 id="Introduction-to-Julia-Programming-Language">Introduction to Julia Programming Language<a class="anchor-link" href="#Introduction-to-Julia-Programming-Language">&#182;</a></h3><ul>
-<li>Why is Julia faster than Python?</li>
+<li>Fundamental difference between Julia and Python?</li>
 </ul>
 <h3 id="Convex-Optimization">Convex Optimization<a class="anchor-link" href="#Convex-Optimization">&#182;</a></h3><h3 id="Why-Convex.jl?">Why Convex.jl?<a class="anchor-link" href="#Why-Convex.jl?">&#182;</a></h3><h3 id="Tutorial">Tutorial<a class="anchor-link" href="#Tutorial">&#182;</a></h3><h3 id="Use-Cases">Use Cases<a class="anchor-link" href="#Use-Cases">&#182;</a></h3><ul>
 <li>Portfolio Optimization</li>
@@ -11969,7 +11969,7 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Great Julia <a href="https://www.youtube.com/watch?v=vWkgEddb4-A">tutorials</a> at SciPy 2014 by David Sanders.</li>
+<li>Awesome Julia <a href="https://www.youtube.com/watch?v=vWkgEddb4-A">tutorials</a> at SciPy 2014 by David Sanders.</li>
 </ul>
 
 </div>
@@ -11980,7 +11980,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Why-is-Julia-faster-than-Python?">Why is Julia faster than Python?<a class="anchor-link" href="#Why-is-Julia-faster-than-Python?">&#182;</a></h2>
+<h2 id="Fundamental-difference-between-Julia-and-Python?">Fundamental difference between Julia and Python?<a class="anchor-link" href="#Fundamental-difference-between-Julia-and-Python?">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
@@ -12152,8 +12152,7 @@ $$</p>
 <!---* sublevel sets $\{x: f(x) \leq \alpha\}$ are convex sets --->
 
 <p><img src="chord.png" alt="chords"></p>
-<p><strong>Note - A function is called affine iff it is both convex and concave.</strong></p>
-
+<!--- **Note - A function is called affine iff it is both convex and concave.** --->
 </div>
 </div>
 </div></div></section><section>
@@ -12184,10 +12183,20 @@ $$<ul>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Why-do-we-need-another-package-if-we-have-available-solvers-like-SCS,-Mosek?">Why do we need another package if we have available solvers like SCS, Mosek?<a class="anchor-link" href="#Why-do-we-need-another-package-if-we-have-available-solvers-like-SCS,-Mosek?">&#182;</a></h2>
+<h2 id="Why-Convex.jl?">Why Convex.jl?<a class="anchor-link" href="#Why-Convex.jl?">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Why do we need another package when we have available solvers like SCS, Mosek?</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12213,17 +12222,31 @@ $$\mathcal K_{\mathrm{SOC}} = \{(x,t): \|x\|_2 \leq t\}$$<ul>
 $$\mathcal K_{\mathrm{SDP}} = \{X: X = X^T,~ v^T X v \geq 0,~ \forall v \in \mathbf{R}^n\}$$
 </div>
 </div>
-</div></div></section><section>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Does the previous slide look complicated? It turns out that the above solvers only understand the conic form which is hard for us to write and this is the reason why we need a package for convex optimization where we can express our problem in functional form and let the package manage the difficult part of converting the problem to conic form.</strong></p>
+<ul>
+<li><strong>Did the previous slide look intimidating?</strong></li>
+</ul>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>It turns out that the above solvers only understand the conic form which is hard for us to write and this is the reason why we need a package for convex optimization where we can express our problem in functional form and let the package manage the difficult part of converting the problem to conic form.*</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12235,7 +12258,7 @@ $$\mathcal K_{\mathrm{SDP}} = \{X: X = X^T,~ v^T X v \geq 0,~ \forall v \in \mat
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Convex</span>
@@ -12253,8 +12276,73 @@ $$\mathcal K_{\mathrm{SDP}} = \{X: X = X^T,~ v^T X v \geq 0,~ \forall v \in \mat
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING: Method definition ctranspose(Convex.Constant) in module Convex at /home/hduser/.julia/v0.5/Convex/src/atoms/affine/transpose.jl:73 overwritten at /home/hduser/.julia/v0.5/Convex/src/atoms/affine/transpose.jl:74.
-WARNING: Method definition norm(Convex.AbstractExpr, Symbol) in module Convex at /home/hduser/.julia/v0.5/Convex/src/atoms/norm.jl:45 overwritten at deprecated.jl:49.
+<pre><span class="ansi-cyan-intense-fg ansi-bold">INFO: </span><span class="ansi-cyan-fg">Precompiling module Convex.
+</span>
+WARNING: deprecated syntax &#34;abstract Vexity&#34; at /Users/ayush/.julia/v0.6/Convex/src/dcp.jl:21.
+Use &#34;abstract type Vexity end&#34; instead.
+
+WARNING: deprecated syntax &#34;abstract Monotonicity&#34; at /Users/ayush/.julia/v0.6/Convex/src/dcp.jl:35.
+Use &#34;abstract type Monotonicity end&#34; instead.
+
+WARNING: deprecated syntax &#34;abstract Sign&#34; at /Users/ayush/.julia/v0.6/Convex/src/dcp.jl:42.
+Use &#34;abstract type Sign end&#34; instead.
+
+WARNING: deprecated syntax &#34;abstract AbstractExpr&#34; at /Users/ayush/.julia/v0.6/Convex/src/expressions.jl:41.
+Use &#34;abstract type AbstractExpr end&#34; instead.
+
+WARNING: deprecated syntax &#34;abstract Constraint&#34; at /Users/ayush/.julia/v0.6/Convex/src/expressions.jl:42.
+Use &#34;abstract type Constraint end&#34; instead.
+
+WARNING: deprecated syntax &#34;typealias Value Union{Number,AbstractArray}&#34; at /Users/ayush/.julia/v0.6/Convex/src/expressions.jl:103.
+Use &#34;const Value = Union{Number,AbstractArray}&#34; instead.
+
+WARNING: deprecated syntax &#34;typealias ValueOrNothing Union{Value,Void}&#34; at /Users/ayush/.julia/v0.6/Convex/src/expressions.jl:104.
+Use &#34;const ValueOrNothing = Union{Value,Void}&#34; instead.
+
+WARNING: deprecated syntax &#34;typealias AbstractExprOrValue Union{AbstractExpr,Value}&#34; at /Users/ayush/.julia/v0.6/Convex/src/expressions.jl:105.
+Use &#34;const AbstractExprOrValue = Union{AbstractExpr,Value}&#34; instead.
+
+WARNING: deprecated syntax &#34;typealias Float64OrNothing Union{Float64,Void}&#34; at /Users/ayush/.julia/v0.6/Convex/src/problems.jl:7.
+Use &#34;const Float64OrNothing = Union{Float64,Void}&#34; instead.
+
+WARNING: deprecated syntax &#34;function .+(...)&#34;.
+Use &#34;function Base.broadcast(::typeof(+), ...)&#34; instead.
+
+WARNING: deprecated syntax &#34;function .+(...)&#34;.
+Use &#34;function Base.broadcast(::typeof(+), ...)&#34; instead.
+
+WARNING: deprecated syntax &#34;function .+(...)&#34;.
+Use &#34;function Base.broadcast(::typeof(+), ...)&#34; instead.
+
+WARNING: deprecated syntax &#34;function .-(...)&#34;.
+Use &#34;function Base.broadcast(::typeof(-), ...)&#34; instead.
+
+WARNING: deprecated syntax &#34;function .-(...)&#34;.
+Use &#34;function Base.broadcast(::typeof(-), ...)&#34; instead.
+
+WARNING: deprecated syntax &#34;function .-(...)&#34;.
+Use &#34;function Base.broadcast(::typeof(-), ...)&#34; instead.
+
+WARNING: deprecated syntax &#34;function .*(...)&#34;.
+Use &#34;function Base.broadcast(::typeof(*), ...)&#34; instead.
+
+WARNING: deprecated syntax &#34;function .*(...)&#34;.
+Use &#34;function Base.broadcast(::typeof(*), ...)&#34; instead.
+
+WARNING: deprecated syntax &#34;function .*(...)&#34;.
+Use &#34;function Base.broadcast(::typeof(*), ...)&#34; instead.
+
+WARNING: deprecated syntax &#34;function ./(...)&#34;.
+Use &#34;function Base.broadcast(::typeof(/), ...)&#34; instead.
+
+WARNING: deprecated syntax &#34;typealias ArrayOrNothing Union{AbstractArray,Void}&#34; at /Users/ayush/.julia/v0.6/Convex/src/atoms/affine/index.jl:5.
+Use &#34;const ArrayOrNothing = Union{AbstractArray,Void}&#34; instead.
+
+WARNING: deprecated syntax &#34;function .^(...)&#34;.
+Use &#34;function Base.broadcast(::typeof(^), ...)&#34; instead.
+
+WARNING: deprecated syntax &#34;function ./(...)&#34;.
+Use &#34;function Base.broadcast(::typeof(/), ...)&#34; instead.
 </pre>
 </div>
 </div>
@@ -12274,7 +12362,7 @@ WARNING: Method definition norm(Convex.AbstractExpr, Symbol) in module Convex at
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># Scalar variable</span>
@@ -12283,6 +12371,8 @@ WARNING: Method definition norm(Convex.AbstractExpr, Symbol) in module Convex at
 <span class="n">y</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="c"># Matrix variable</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c"># Complex Variables</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">ComplexVariable</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -12294,14 +12384,14 @@ WARNING: Method definition norm(Convex.AbstractExpr, Symbol) in module Convex at
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[4]:</div>
+<div class="prompt output_prompt">Out[3]:</div>
 
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>Variable of
-size: (4, 2)
-sign: Convex.NoSign()
+size: (1, 1)
+sign: Convex.ComplexSign()
 vexity: Convex.AffineVexity()</pre>
 </div>
 
@@ -12316,7 +12406,7 @@ vexity: Convex.AffineVexity()</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Expressions">Expressions<a class="anchor-link" href="#Expressions">&#182;</a></h1><ul>
+<h2 id="Expressions">Expressions<a class="anchor-link" href="#Expressions">&#182;</a></h2><ul>
 <li>We can operate on variables to form <em>convex expressions</em></li>
 </ul>
 
@@ -12325,14 +12415,14 @@ vexity: Convex.AffineVexity()</pre>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># indexing, multiplication, addition</span>
 <span class="n">e1</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
 
 <span class="c"># expressions can be affine, convex, or concave</span>
-<span class="n">e3</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">e2</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12344,7 +12434,7 @@ vexity: Convex.AffineVexity()</pre>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[5]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -12368,13 +12458,71 @@ vexity: Convex.ConcaveVexity()
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Disciplined-Convex-Programming">Disciplined Convex Programming<a class="anchor-link" href="#Disciplined-Convex-Programming">&#182;</a></h2><ul>
+<li>Convex.jl uses <a href="http://dcp.stanford.edu/">set of pre-defined rules</a> to infer the convexity of the expressions, this method if constructing Convex expressions is called Disciplined Convex Programming. </li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c">## Consider an expression </span>
+<span class="n">e3</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[9]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>AbstractExpr with
+head: qol_elem
+size: (1, 1)
+sign: Convex.Positive()
+vexity: Convex.NotDcp()
+</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre><span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Expression not DCP compliant. Trying to solve non-DCP compliant problems can lead to unexpected behavior.</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># affine equality constraint</span>
@@ -12391,7 +12539,7 @@ vexity: Convex.ConcaveVexity()
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[6]:</div>
+<div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -12404,7 +12552,7 @@ size: (3, 1)
 sign: Convex.NoSign()
 vexity: Convex.AffineVexity()
 
-rhs: [-1.6048077944321295,2.1044876445367,0.6535176954608789]
+rhs: [-0.615695, 0.328136, 0.529251]
 vexity: Convex.AffineVexity()</pre>
 </div>
 
@@ -12416,7 +12564,7 @@ vexity: Convex.AffineVexity()</pre>
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># convex inequality constraint</span>
@@ -12432,7 +12580,7 @@ vexity: Convex.AffineVexity()</pre>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[8]:</div>
+<div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -12469,7 +12617,7 @@ vexity: Convex.ConvexVexity()</pre>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">objective</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
@@ -12485,7 +12633,7 @@ vexity: Convex.ConvexVexity()</pre>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[9]:</div>
+<div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -12506,7 +12654,7 @@ size: (3, 1)
 sign: Convex.NoSign()
 vexity: Convex.AffineVexity()
 
-rhs: [-1.6048077944321295,2.1044876445367,0.6535176954608789]
+rhs: [-0.615695, 0.328136, 0.529251]
 vexity: Convex.AffineVexity()
 		Constraint:
 &lt;= constraint
@@ -12529,7 +12677,7 @@ current status: not yet solved</pre>
 </div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># solve the problem</span>
@@ -12548,10 +12696,75 @@ current status: not yet solved</pre>
 <div class="output_area">
 <div class="prompt"></div>
 
+<div class="output_subarea output_stream output_stderr output_text">
+<pre><span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{Convex.ConicConstr}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SOCElemConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/soc_constraints.jl:50</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.GeoMeanAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/second_order_cone/geomean.jl:45</span>
+ [5] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.NegateAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:47</span>
+ [6] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [7] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.EqConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/constraints.jl:43</span>
+ [8] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:99</span>
+ [9] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [10] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [11] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:21</span>
+ [12] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [13] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [14] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [15] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [16] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[13], in expression starting on line 2
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{DataStructures.OrderedDict{UInt64,Tuple{Union{AbstractArray, Number},Union{AbstractArray, Number}}}}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SOCElemConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/soc_constraints.jl:51</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.GeoMeanAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/second_order_cone/geomean.jl:45</span>
+ [5] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.NegateAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:47</span>
+ [6] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [7] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.EqConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/constraints.jl:43</span>
+ [8] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:99</span>
+ [9] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [10] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [11] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:21</span>
+ [12] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [13] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [14] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [15] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [16] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[13], in expression starting on line 2
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{DataStructures.OrderedDict{UInt64,Tuple{Union{AbstractArray, Number},Union{AbstractArray, Number}}}}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SOCConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/soc_constraints.jl:21</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.EucNormAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/second_order_cone/norm2.jl:47</span>
+ [5] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.NegateAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:47</span>
+ [6] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [7] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.LtConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/constraints.jl:101</span>
+ [8] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:101</span>
+ [9] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [10] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [11] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:21</span>
+ [12] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [13] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [14] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [15] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [16] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[13], in expression starting on line 2
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>----------------------------------------------------------------------------
-	SCS v1.1.8 - Splitting Conic Solver
-	(c) Brendan O&#39;Donoghue, Stanford University, 2012-2015
+	SCS v1.2.6 - Splitting Conic Solver
+	(c) Brendan O&#39;Donoghue, Stanford University, 2012-2016
 ----------------------------------------------------------------------------
 Lin-sys: sparse-direct, nnz in A = 34
 eps = 1.00e-04, alpha = 1.80, max_iters = 20000, normalize = 1, scale = 5.00
@@ -12559,21 +12772,21 @@ Variables n = 8, constraints m = 15
 Cones:	primal zero / dual free vars: 4
 	linear vars: 3
 	soc vars: 8, soc blks: 2
-Setup time: 8.36e-05s
+Setup time: 2.39e-03s
 ----------------------------------------------------------------------------
  Iter | pri res | dua res | rel gap | pri obj | dua obj | kap/tau | time (s)
 ----------------------------------------------------------------------------
-     0|      inf       inf      -nan      -inf       inf       inf  2.49e-05 
-    20|      inf       inf      -nan      -inf      -inf       inf  5.35e-05 
+     0|      inf       inf       nan      -inf       inf       inf  3.89e-04 
+    20|      inf       inf       nan      -inf      -inf       inf  4.01e-04 
 ----------------------------------------------------------------------------
 Status: Unbounded
-Timing: Solve time: 5.92e-05s
-	Lin-sys: nnz in L factor: 69, avg solve time: 6.34e-07s
-	Cones: avg projection time: 2.07e-07s
+Timing: Solve time: 4.21e-04s
+	Lin-sys: nnz in L factor: 69, avg solve time: 5.35e-06s
+	Cones: avg projection time: 6.34e-08s
 ----------------------------------------------------------------------------
 Certificate of dual infeasibility:
-dist(s, K) = 8.2611e-21
-|Ax + s|_2 * |c|_2 = 2.3690e-06
+dist(s, K) = 1.7978e-21
+|Ax + s|_2 * |c|_2 = 1.9650e-06
 c&#39;x = -1.0000
 ============================================================================
 </pre>
@@ -12584,13 +12797,26 @@ c&#39;x = -1.0000
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING: Problem status Unbounded; solution may be inaccurate.
+<pre><span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">isnan{T &lt;: Number}(x::AbstractArray{T}) is deprecated, use isnan.(x) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">isnan</span><span class="ansi-bold">(</span>::Array{Float64,1}<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">populate_solution!</span><span class="ansi-bold">(</span>::SCS.SCSMathProgModel, ::Convex.Problem, ::Dict{UInt64,Tuple{Int64,Int64}}, ::Array{Convex.ConicConstr,1}<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:118</span>
+ [4] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:38</span>
+ [5] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:21</span>
+ [6] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [7] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [8] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [9] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [10] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[13], in expression starting on line 2
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Problem status Unbounded; solution may be inaccurate.</span>
 </pre>
 </div>
 </div>
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[10]:</div>
+<div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -12611,7 +12837,7 @@ size: (3, 1)
 sign: Convex.NoSign()
 vexity: Convex.AffineVexity()
 
-rhs: [-1.6048077944321295,2.1044876445367,0.6535176954608789]
+rhs: [-0.615695, 0.328136, 0.529251]
 vexity: Convex.AffineVexity()
 		Constraint:
 &lt;= constraint
@@ -12634,7 +12860,7 @@ current status: Unbounded</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">optval</span>
@@ -12649,12 +12875,12 @@ current status: Unbounded</pre>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[11]:</div>
+<div class="prompt output_prompt">Out[14]:</div>
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>-0.9999999999999999</pre>
+<pre>-1.0000000000000002</pre>
 </div>
 
 </div>
@@ -12665,7 +12891,7 @@ current status: Unbounded</pre>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">value</span>
@@ -12680,223 +12906,12 @@ current status: Unbounded</pre>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[12]:</div>
+<div class="prompt output_prompt">Out[15]:</div>
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>-0.49999943073238445</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Why-do-we-need-complex-domain-optimization-convex-package?">Why do we need complex-domain optimization convex package?<a class="anchor-link" href="#Why-do-we-need-complex-domain-optimization-convex-package?">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Applications-of-complex-domain-convex-optimization">Applications of complex-domain convex optimization<a class="anchor-link" href="#Applications-of-complex-domain-convex-optimization">&#182;</a></h2><ol>
-<li><strong>Phase retreival from sparse signals</strong> used in MRI Imaging of the Brain</li>
-</ol>
-<p><strong>Mathematical Formulation</strong></p>
-<p><em>find x</em></p>
-<p><em>satisfying A(x) = A($x_0$) = b</em></p>
-<p><em>where $x_0$ in $x\in \mathbf{C}^n$</em></p>
-<p><em>A($x_0$) = {|$<a_k, x_0>$|^2 : k = 1, 2, . . . , m }</em></p>
-<p><img src="Brain_MRI.jpg" alt="MRI Imaging"></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Used in demodulation of the mutually interfering digital streams of information</strong> that occur in areas such as wireless communications, high-speed data transmission, DSL, satellite communication, digital television, and magnetic recording.</p>
-<p>Here the problem is detecting interference between multiple users in a wireless communication network.</p>
-<p><img src="wirelesscommunication.jpg" alt="Wireless Communication"></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Optimization in power grids</strong>: The problem of finding the most efficient dispatch of generators in a power grid subject to meeting the demand for power and respecting network constraints. Here the complex variable x represents steady-state voltages in an AC power network.</p>
-<p>Here one of the variables which represents steady-state voltages in an AC power network is a complex variable so it again becomes complex-domain optimization problem.</p>
-<p><img src="powergrid.jpg" alt="Power Grids"></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="How-Convex.jl-handles-the-complex-domain-optimization-problem?">How Convex.jl handles the complex-domain optimization problem?<a class="anchor-link" href="#How-Convex.jl-handles-the-complex-domain-optimization-problem?">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Things-to-keep-in-mind">Things to keep in mind<a class="anchor-link" href="#Things-to-keep-in-mind">&#182;</a></h2><ul>
-<li>The objective function must be real</li>
-<li>The inequality constraints must be real</li>
-<li>The last entry of the Second Order Conic Constraint must be real.</li>
-<li>All variables in exponential cones must be real.</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">A</span> <span class="n">complex</span> <span class="n">equality</span> <span class="n">constraint</span> <span class="n">could</span> <span class="n">be</span> <span class="n">transfored</span> <span class="n">to</span> <span class="n">corresponding</span> <span class="mi">2</span> <span class="n">equality</span> <span class="n">constraints</span><span class="o">.</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="My-Work">My Work<a class="anchor-link" href="#My-Work">&#182;</a></h1><p>I have started with implemeting the support for complex coefficients which means we keep the variable (say x) as real but the coefficients as complex.</p>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># Creating a real variable</span>
-<span class="k">using</span> <span class="n">Convex</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[2]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Variable of
-size: (1, 1)
-sign: Convex.NoSign()
-vexity: Convex.AffineVexity()</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># Creating an objective function</span>
-<span class="n">objective</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[3]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>AbstractExpr with
-head: *
-size: (1, 1)
-sign: Convex.NoSign()
-vexity: Convex.AffineVexity()
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># Creating complex equality constraints</span>
-<span class="n">c1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="nb">im</span><span class="p">)</span><span class="o">*</span><span class="n">x</span> <span class="o">==</span> <span class="p">(</span><span class="mi">6</span><span class="o">+</span><span class="mi">9</span><span class="nb">im</span><span class="p">)</span>
-<span class="n">c2</span> <span class="o">=</span> <span class="n">x</span><span class="o">&lt;=</span><span class="mi">5</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[4]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Constraint:
-&lt;= constraint
-lhs: Variable of
-size: (1, 1)
-sign: Convex.NoSign()
-vexity: Convex.AffineVexity()
-rhs: 5
-vexity: Convex.AffineVexity()</pre>
+<pre>-0.499999457920257</pre>
 </div>
 
 </div>
@@ -12905,75 +12920,90 @@ vexity: Convex.AffineVexity()</pre>
 </div>
 
 </div></div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span>
-</pre></div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Use-Cases">Use Cases<a class="anchor-link" href="#Use-Cases">&#182;</a></h1>
 </div>
 </div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[5]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Problem:
-minimize AbstractExpr with
-head: *
-size: (1, 1)
-sign: Convex.NoSign()
-vexity: Convex.AffineVexity()
-
-subject to
-Constraint:
-== constraint
-lhs: AbstractExpr with
-head: *
-size: (1, 1)
-sign: Convex.ComplexSign()
-vexity: Convex.AffineVexity()
-
-rhs: 6 + 9im
-vexity: Convex.AffineVexity()
-		Constraint:
-&lt;= constraint
-lhs: Variable of
-size: (1, 1)
-sign: Convex.NoSign()
-vexity: Convex.AffineVexity()
-rhs: 5
-vexity: Convex.AffineVexity()
-current status: not yet solved</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Portfolio-Optimization">Portfolio Optimization<a class="anchor-link" href="#Portfolio-Optimization">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>In this problem, we know the mean returns $R \in \mathbf{R}^n$ of each asset and the covariance $Q \in \mathbf{R}^{n \times n}$ between the assets. </li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Our objective is to find a portfolio allocation that minimizes the <em>risk</em> (which we measure as the variance $w^T Q w$) and maximizes the <em>return</em> ($w^T R$) of the portfolio of the simulataneously.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>This problem can be written as</li>
+</ul>
+\begin{array}{ll}
+    \mbox{minimize}   & \lambda*w^T Q w - (1-\lambda)*w^T R \\
+    \mbox{subject to} & \sum_i w_i = 1 \\
+                      & w_\mbox{lower} \leq w \leq w_\mbox{upper}
+\end{array}<p>where $w \in \mathbf{R}^n$ is the vector containing weights allocated to each asset in the efficient frontier.</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Portfolio-Optimization-using-Convex.jl">Portfolio Optimization using Convex.jl<a class="anchor-link" href="#Portfolio-Optimization-using-Convex.jl">&#182;</a></h4>
+</div>
+</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">solve!</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="kc">false</span><span class="p">)</span>
-<span class="n">x</span><span class="o">.</span><span class="n">value</span>
-<span class="n">p</span><span class="o">.</span><span class="n">optval</span>
-
-<span class="c"># Solution</span>
-<span class="c"># x.value = 3.0001651341687965</span>
-<span class="c"># p.optval = 6.000269523275286</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Convex</span><span class="p">,</span> <span class="n">ECOS</span>    <span class="c">#We are using ECOS solver. Install using Pkg.add(&quot;ECOS&quot;)</span>
+<span class="c"># generate problem data</span>
+<span class="n">srand</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>     <span class="c">#Set the seed</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>        <span class="c"># Assume that we have portfolio of 5 assets.</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">A</span><span class="o">&#39;</span> <span class="o">+</span> <span class="n">diagm</span><span class="p">(</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+<span class="n">w_lower</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">w_upper</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">risk</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>   <span class="c"># Initialized the risk and the return vectors.   </span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>   <span class="c"># lambda varies in the interval(0,1) in the steps of 1/2000.</span>
 </pre></div>
 
 </div>
@@ -12987,47 +13017,219 @@ current status: not yet solved</pre>
 <div class="output_area">
 <div class="prompt"></div>
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>----------------------------------------------------------------------------
-	SCS v1.1.8 - Splitting Conic Solver
-	(c) Brendan O&#39;Donoghue, Stanford University, 2012-2015
-----------------------------------------------------------------------------
-Lin-sys: sparse-direct, nnz in A = 5
-eps = 1.00e-04, alpha = 1.80, max_iters = 20000, normalize = 1, scale = 5.00
-Variables n = 2, constraints m = 4
-Cones:	primal zero / dual free vars: 3
-	linear vars: 1
-Setup time: 5.35e-05s
-----------------------------------------------------------------------------
- Iter | pri res | dua res | rel gap | pri obj | dua obj | kap/tau | time (s)
-----------------------------------------------------------------------------
-     0|      inf       inf      -nan       inf      -inf       inf  2.26e-05 
-    60| 7.69e-06  5.72e-05  3.14e-05  6.00e+00  6.00e+00  9.46e-17  1.02e-04 
-----------------------------------------------------------------------------
-Status: Solved
-Timing: Solve time: 1.04e-04s
-	Lin-sys: nnz in L factor: 11, avg solve time: 3.59e-07s
-	Cones: avg projection time: 1.99e-07s
-----------------------------------------------------------------------------
-Error metrics:
-dist(s, K) = 1.0750e-16, dist(y, K*) = 0.0000e+00, s&#39;y/m = 2.9317e-17
-|Ax + s - b|_2 / (1 + |b|_2) = 7.6946e-06
-|A&#39;y + c|_2 / (1 + |c|_2) = 5.7200e-05
-|c&#39;x + b&#39;y| / (1 + |c&#39;x| + |b&#39;y|) = 3.1364e-05
-----------------------------------------------------------------------------
-c&#39;x = 5.9999, -b&#39;y = 6.0003
-============================================================================
+<div class="output_subarea output_stream output_stderr output_text">
+<pre><span class="ansi-cyan-intense-fg ansi-bold">INFO: </span><span class="ansi-cyan-fg">Recompiling stale cache file /Users/ayush/.julia/lib/v0.6/ECOS.ji for module ECOS.
+</span></pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">R</span><span class="p">));</span>
+<span class="c">#Defining constraints</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">w_lower</span> <span class="o">&lt;=</span> <span class="n">w</span><span class="p">;</span> 
+<span class="n">c3</span> <span class="o">=</span> <span class="n">w</span> <span class="o">&lt;=</span> <span class="n">w_upper</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="mi">2000</span>
+    <span class="n">λ</span> <span class="o">=</span> <span class="n">i</span><span class="o">/</span><span class="mi">2000</span><span class="p">;</span>
+
+    <span class="c">#Defining Objective function</span>
+    <span class="n">objective</span> <span class="o">=</span> <span class="n">λ</span> <span class="o">*</span> <span class="n">quadform</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">Q</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">λ</span><span class="p">)</span><span class="o">*</span> <span class="n">w</span><span class="o">&#39;</span> <span class="o">*</span><span class="n">R</span><span class="p">;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span><span class="n">c2</span><span class="p">,</span><span class="n">c3</span><span class="p">);</span>
+    <span class="n">solve!</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">ECOSSolver</span><span class="p">(</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">false</span><span class="p">));</span>
+    <span class="n">risk</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">value</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">Q</span> <span class="o">*</span> <span class="n">w</span><span class="o">.</span><span class="n">value</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">ret</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">value</span><span class="o">&#39;</span><span class="n">R</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="c">#println(&quot;$i &quot;,&quot;$(λ*risk[i] - (1-λ)*ret[i]) &quot;,&quot;$p.optval&quot;);</span>
+    <span class="k">end</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre><span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{Convex.ConicConstr}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SOCElemConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/soc_constraints.jl:50</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.QolElemAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/second_order_cone/qol_elementwise.jl:41</span>
+ [5] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.MultiplyAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/multiply_divide.jl:71</span> (repeats 2 times)
+ [6] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [7] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.EqConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/constraints.jl:43</span>
+ [8] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:99</span>
+ [9] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [10] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [11] <span class="ansi-bold">#solve!#24</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::Convex.Problem, ::ECOS.ECOSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:13</span>
+ [12] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem, ::ECOS.ECOSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:12</span>
+ [13] <span class="ansi-bold">macro expansion</span> at <span class="ansi-bold">./In[17]:12</span> [inlined]
+ [14] <span class="ansi-bold">anonymous</span> at <span class="ansi-bold">./&lt;missing&gt;:?</span>
+ [15] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [16] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [17] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [18] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [19] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[17], in expression starting on line 6
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{DataStructures.OrderedDict{UInt64,Tuple{Union{AbstractArray, Number},Union{AbstractArray, Number}}}}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SOCElemConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/soc_constraints.jl:51</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.QolElemAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/second_order_cone/qol_elementwise.jl:41</span>
+ [5] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.MultiplyAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/multiply_divide.jl:71</span> (repeats 2 times)
+ [6] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [7] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.EqConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/constraints.jl:43</span>
+ [8] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:99</span>
+ [9] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [10] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [11] <span class="ansi-bold">#solve!#24</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::Convex.Problem, ::ECOS.ECOSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:13</span>
+ [12] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem, ::ECOS.ECOSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:12</span>
+ [13] <span class="ansi-bold">macro expansion</span> at <span class="ansi-bold">./In[17]:12</span> [inlined]
+ [14] <span class="ansi-bold">anonymous</span> at <span class="ansi-bold">./&lt;missing&gt;:?</span>
+ [15] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [16] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [17] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [18] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [19] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[17], in expression starting on line 6
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{DataStructures.OrderedDict{UInt64,Tuple{Union{AbstractArray, Number},Union{AbstractArray, Number}}}}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SOCConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/soc_constraints.jl:21</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.EucNormAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/second_order_cone/norm2.jl:47</span>
+ [5] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.MultiplyAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/multiply_divide.jl:71</span>
+ [6] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SOCElemConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/soc_constraints.jl:53</span>
+ [7] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.QolElemAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/second_order_cone/qol_elementwise.jl:41</span>
+ [8] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.MultiplyAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/multiply_divide.jl:71</span> (repeats 2 times)
+ [9] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [10] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.EqConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/constraints.jl:43</span>
+ [11] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:99</span>
+ [12] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [13] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [14] <span class="ansi-bold">#solve!#24</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::Convex.Problem, ::ECOS.ECOSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:13</span>
+ [15] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem, ::ECOS.ECOSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:12</span>
+ [16] <span class="ansi-bold">macro expansion</span> at <span class="ansi-bold">./In[17]:12</span> [inlined]
+ [17] <span class="ansi-bold">anonymous</span> at <span class="ansi-bold">./&lt;missing&gt;:?</span>
+ [18] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [19] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [20] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [21] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [22] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[17], in expression starting on line 6
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{Int64}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.CTransposeAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/transpose.jl:114</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.MultiplyAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/multiply_divide.jl:71</span>
+ [5] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.MultiplyAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/multiply_divide.jl:89</span>
+ [6] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.NegateAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:47</span>
+ [7] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [8] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.EqConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/constraints.jl:43</span>
+ [9] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:99</span>
+ [10] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [11] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [12] <span class="ansi-bold">#solve!#24</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::Convex.Problem, ::ECOS.ECOSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:13</span>
+ [13] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem, ::ECOS.ECOSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:12</span>
+ [14] <span class="ansi-bold">macro expansion</span> at <span class="ansi-bold">./In[17]:12</span> [inlined]
+ [15] <span class="ansi-bold">anonymous</span> at <span class="ansi-bold">./&lt;missing&gt;:?</span>
+ [16] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [17] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [18] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [19] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [20] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[17], in expression starting on line 6
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{Int64}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.CTransposeAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/transpose.jl:115</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.MultiplyAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/multiply_divide.jl:71</span>
+ [5] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.MultiplyAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/multiply_divide.jl:89</span>
+ [6] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.NegateAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:47</span>
+ [7] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [8] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.EqConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/constraints.jl:43</span>
+ [9] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:99</span>
+ [10] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [11] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [12] <span class="ansi-bold">#solve!#24</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::Convex.Problem, ::ECOS.ECOSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:13</span>
+ [13] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem, ::ECOS.ECOSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:12</span>
+ [14] <span class="ansi-bold">macro expansion</span> at <span class="ansi-bold">./In[17]:12</span> [inlined]
+ [15] <span class="ansi-bold">anonymous</span> at <span class="ansi-bold">./&lt;missing&gt;:?</span>
+ [16] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [17] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [18] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [19] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [20] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[17], in expression starting on line 6
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">isnan{T &lt;: Number}(x::AbstractArray{T}) is deprecated, use isnan.(x) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">isnan</span><span class="ansi-bold">(</span>::Array{Float64,1}<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">populate_solution!</span><span class="ansi-bold">(</span>::ECOS.ECOSMathProgModel, ::Convex.Problem, ::Dict{UInt64,Tuple{Int64,Int64}}, ::Array{Convex.ConicConstr,1}<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:118</span>
+ [4] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:38</span>
+ [5] <span class="ansi-bold">#solve!#24</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::Convex.Problem, ::ECOS.ECOSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:13</span>
+ [6] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem, ::ECOS.ECOSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:12</span>
+ [7] <span class="ansi-bold">macro expansion</span> at <span class="ansi-bold">./In[17]:12</span> [inlined]
+ [8] <span class="ansi-bold">anonymous</span> at <span class="ansi-bold">./&lt;missing&gt;:?</span>
+ [9] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [10] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [11] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [12] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [13] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[17], in expression starting on line 6
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Problem status Suboptimal; solution may be inaccurate.</span>
 </pre>
 </div>
 </div>
 
+</div>
+</div>
+
+</div></div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">PyPlot</span>            <span class="c">#Install PyPlot if you don&#39;t have it installed. Pkg.add(&quot;PyPlot&quot;)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">risk</span><span class="p">,</span><span class="n">ret</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&quot;Markowitz Efficient Frontier&quot;</span><span class="p">);</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;Expected Risk-Variance&quot;</span><span class="p">);</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;Expected Return&quot;</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
 <div class="output_area">
-<div class="prompt output_prompt">Out[9]:</div>
+<div class="prompt"></div>
 
 
 
-<div class="output_text output_subarea output_execute_result">
-<pre>5.999939822156568</pre>
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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/8DzH8TMzAwbN27EE088gW7dumHGjBnw8fHB9evXcfXqVURHR9d6XmBgIJYvX44lS5YgJSUFY8aMgaOjI5KTk3HgwAG89NJLWjMyN0RgYCCcnZ2xadMmODo6wt7eHn369DFYQBw7diwGDBiARYsWISkpCeHh4Thy5Ah+/PFHLFiwoFEtOhEREQCAt99+G+PHj4elpSWeeuqpWm87LVq0CD/++CNGjhyJGTNmoHv37iguLkZiYiL27t2L9PR0DiGnJsGgQ6QHQ4YMwTfffINVq1Zh7ty5CAgIwEcffYSUlJSH6pD63HPPoaioCK+++irEYjFWr14NLy8v/Prrr1i0aJGmU3F4eDh+/PHHGvP12Nvbo3v37oiLi9PqcFwdbiQSSYO+8NauXYuXXnoJS5cuRWlpKaZPn47nn38egiDg1KlTOHXqVK21P8i7775b6/YtW7boJegAlX2eTpw4gWXLlmHNmjVQq9UIDAzEiy++WO95ixcvRkhICD799FMsW7YMQOXnNXz4cDz55JM612FpaYlt27ZhyZIlmD17NioqKrBlyxaDBR0zMzMcPHgQ77zzDvbs2YN///vf8Pf3x5o1azBv3rxGXTMyMhLvv/8+vvrqKxw6dAhqtRppaWnw9fWtcayDgwNiYmLw4YcfYu/evdi6dSucnJwQEhKCf/7zn3XO20SkbyKhqXrLERERETUx9tEhIiIik8WgQ0RERCaLQYeIiIhMFoMOERERmSwGHSIiIjJZDDpERERkslrdPDpqtRoZGRlwdHRs8inZiYiIqHEEQUBRURHatGmjNTHqg7S6oJORkQGJRGLsMoiIiKgR6pqksi6tLug4OjoCqPygxGKxkashIiKihpDJZJBIJJrv8YZqdUGn+naVWCxm0CEiImphdO12ws7IREREZLIYdIiIiMhkMegQERGRyWLQISIiIpPFoENEREQmi0GHiIiITBaDDhEREZksBh0iIiIyWQw6REREZLIYdIiIiMhkMegQERGRyWLQISIiIpPFoENERER6IQgC7haUILdYYexSNFrd6uVERETUeNJSJdLyS3C3oARp+aVIKyipel6KmznFmuNSVo02YpV/YdAhIiIijTKlCncLKgPM3fwSpBWUIi2/BGkFJUjNK4GsrMLYJeqEQYeIiKgVUakFZEpLNa0x1WEmNb+yZSan6MG3ndzsreDrageJ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b39XY5dDRERkUtgZ2cjOJ1cO0e/kI4aTnaWRqyEiIjItDDpGVn3biot4EhER6R+DjpEx6BARERkOg44RsX8OERGRYTHoGBH75xARERkWg44R8bYVERGRYTHoGBGDDhERkWEx6BhJXrECt+/JAQC9/F2MXA0REZFpYtAxkouphQCAYE8HONtZGbkaIiIi08SgYyQX7hQAACLasTWHiIjIUBh0jORiVdDpwaBDRERkMAw6RlBeocalu5W3rtiiQ0REZDgMOkZwNUMKRYUaLnaWaO9ub+xyiIiITBaDjhHc3z9HJBIZuRoiIiLTxaBjBBdT2T+HiIioKTDoNDFBEP5q0fFj0CEiIjIkBp0mll5YimyZAk/raAoAAB3FSURBVBZmIoT7Ohu7HCIiIpPGoNPELt+VAgBCfRxha2Vu5GqIiIhMG4NOE6sOOmzNISIiMjwGnSaWmF45f054WycjV0JERGT6GHSakFotaFp0uvgy6BARERkag04TupNfgqKyClhbmCHEy9HY5RAREZk8Bp0mdLlq2YdObcSwNOdHT0REZGj8tm1CidUdkdk/h4iIqEkw6DShv/rncMQVERFRU2DQaSIqtYArGdVDy9miQ0RE1BSMGnRWrlyJXr16wdHREZ6enhgzZgxu3LjxwPNOnjyJHj16wNraGkFBQdi6davhi31It+8Vo6RcBTsrcwR6OBi7HCIiolbBqEHn1KlTmDNnDs6fP49jx45BqVRi+PDhkMvldZ6TnJyM0aNHY/DgwUhISMDcuXMxa9YsREdHN2HluruWKQMAhHo7wtyMK5YTERE1BQtjvviRI0e0nm/duhWenp64cOECBgwYUOs5mzZtQkBAANasWQMA6NixI86cOYNPP/0UI0aMMHjNjXU9qwgA0NFHbORKiIiIWo9m1UdHKq3sw+Lq6lrnMefOncOwYcO0to0YMQLnzp2r9XiFQgGZTKb1MIbr1S06DDpERERNptkEHbVajblz56J///4ICwur87isrCx4eXlpbfPy8oJMJkNpaWmN41euXAknJyfNQyKR6L32hvgjs6pFx5sTBRIRETWVZhN05syZgytXrmDXrl16ve6SJUsglUo1j7S0NL1evyEK5OXIkpUBADow6BARETUZo/bRqfbaa6/h4MGDOH36NHx9fes91tvbG9nZ2VrbsrOzIRaLYWtrW+N4a2trWFtb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"
+>
 </div>
 
 </div>
@@ -13041,13 +13243,496 @@ c&#39;x = 5.9999, -b&#39;y = 6.0003
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Future-work">Future work<a class="anchor-link" href="#Future-work">&#182;</a></h1><ul>
-<li>Implementing complex variables</li>
-<li>Implemeting Complex SemiDefinite Programming</li>
+<h2 id="Logistic-Regression">Logistic Regression<a class="anchor-link" href="#Logistic-Regression">&#182;</a></h2><ul>
+<li><p>I will demonstrate by using the iris data.</p>
+</li>
+<li><p>Predict whether the iris species is versicolor using the sepal length and width and petal length and width.</p>
+</li>
 </ul>
 
 </div>
 </div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Convex.jl-Code">Convex.jl Code<a class="anchor-link" href="#Convex.jl-Code">&#182;</a></h3>
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">DataFrames</span><span class="p">,</span> <span class="n">RDatasets</span><span class="p">,</span> <span class="n">Convex</span><span class="p">,</span> <span class="n">SCS</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">(</span><span class="s">&quot;datasets&quot;</span><span class="p">,</span> <span class="s">&quot;iris&quot;</span><span class="p">)</span>
+<span class="c">## outcome variable: +1 for versicolor, -1 otherwise</span>
+<span class="n">iris</span><span class="p">[</span><span class="o">:</span><span class="n">Y</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">species</span> <span class="o">==</span> <span class="s">&quot;versicolor&quot;</span> <span class="o">?</span> <span class="mf">1.0</span> <span class="o">:</span> <span class="o">-</span><span class="mf">1.0</span> <span class="k">for</span> <span class="n">species</span> <span class="kp">in</span> <span class="n">iris</span><span class="p">[</span><span class="o">:</span><span class="n">Species</span><span class="p">]]</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="n">iris</span><span class="p">[</span><span class="o">:</span><span class="n">Y</span><span class="p">])</span>
+<span class="c">## create data matrix with one column for each feature (first column corresponds to offset)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="n">ones</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="n">iris</span><span class="p">[</span><span class="o">:</span><span class="n">SepalLength</span><span class="p">]</span> <span class="n">iris</span><span class="p">[</span><span class="o">:</span><span class="n">SepalWidth</span><span class="p">]</span> <span class="n">iris</span><span class="p">[</span><span class="o">:</span><span class="n">PetalLength</span><span class="p">]</span> <span class="n">iris</span><span class="p">[</span><span class="o">:</span><span class="n">PetalWidth</span><span class="p">]];</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># solve the logistic regression problem</span>
+<span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">logisticloss</span><span class="p">(</span><span class="o">-</span><span class="n">Y</span><span class="o">.*</span><span class="p">(</span><span class="n">X</span><span class="o">*</span><span class="n">beta</span><span class="p">)));</span>
+<span class="n">solve!</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">SCSSolver</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">false</span><span class="p">));</span>
+<span class="n">problem</span><span class="o">.</span><span class="n">optval</span>
+<span class="n">beta</span><span class="o">.</span><span class="n">value</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre><span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{DataStructures.OrderedDict{UInt64,Tuple{Union{AbstractArray, Number},Union{AbstractArray, Number}}}}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.ExpConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/exp_constraints.jl:52</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.ExpAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/exp_cone/exp.jl:55</span>
+ [5] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SumAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/sum.jl:48</span>
+ [6] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.LogSumExpAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/exp_cone/logsumexp.jl:55</span>
+ [7] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [8] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.EqConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/constraints.jl:43</span>
+ [9] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:99</span>
+ [10] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [11] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [12] <span class="ansi-bold">#solve!#24</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::Convex.Problem, ::SCS.SCSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:13</span>
+ [13] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem, ::SCS.SCSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:12</span>
+ [14] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [15] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [16] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [17] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [18] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[31], in expression starting on line 5
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{Int64}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.IndexAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/index.jl:57</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.ExpConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/exp_constraints.jl:54</span>
+ [5] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.ExpAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/exp_cone/exp.jl:55</span>
+ [6] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SumAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/sum.jl:48</span>
+ [7] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.LogSumExpAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/exp_cone/logsumexp.jl:55</span>
+ [8] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [9] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.EqConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/constraints.jl:43</span>
+ [10] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:99</span>
+ [11] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [12] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [13] <span class="ansi-bold">#solve!#24</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::Convex.Problem, ::SCS.SCSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:13</span>
+ [14] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem, ::SCS.SCSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:12</span>
+ [15] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [16] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [17] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [18] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [19] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[31], in expression starting on line 5
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{Int64}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.TransposeAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/transpose.jl:51</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.HcatAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/stack.jl:47</span>
+ [5] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.TransposeAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/transpose.jl:44</span>
+ [6] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [7] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.IndexAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/index.jl:72</span>
+ [8] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.ExpConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/exp_constraints.jl:54</span>
+ [9] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.ExpAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/exp_cone/exp.jl:55</span>
+ [10] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SumAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/sum.jl:48</span>
+ [11] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.LogSumExpAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/exp_cone/logsumexp.jl:55</span>
+ [12] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [13] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.EqConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/constraints.jl:43</span>
+ [14] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:99</span>
+ [15] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [16] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [17] <span class="ansi-bold">#solve!#24</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::Convex.Problem, ::SCS.SCSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:13</span>
+ [18] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem, ::SCS.SCSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:12</span>
+ [19] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [20] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [21] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [22] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [23] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[31], in expression starting on line 5
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{Int64}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.TransposeAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/transpose.jl:52</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.HcatAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/stack.jl:47</span>
+ [5] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.TransposeAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/transpose.jl:44</span>
+ [6] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [7] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.IndexAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/index.jl:72</span>
+ [8] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.ExpConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/exp_constraints.jl:54</span>
+ [9] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.ExpAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/exp_cone/exp.jl:55</span>
+ [10] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SumAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/sum.jl:48</span>
+ [11] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.LogSumExpAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/exp_cone/logsumexp.jl:55</span>
+ [12] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [13] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.EqConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/constraints.jl:43</span>
+ [14] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:99</span>
+ [15] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [16] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [17] <span class="ansi-bold">#solve!#24</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::Convex.Problem, ::SCS.SCSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:13</span>
+ [18] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem, ::SCS.SCSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:12</span>
+ [19] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [20] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [21] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [22] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [23] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[31], in expression starting on line 5
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">isnan{T &lt;: Number}(x::AbstractArray{T}) is deprecated, use isnan.(x) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">isnan</span><span class="ansi-bold">(</span>::Array{Float64,1}<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">populate_solution!</span><span class="ansi-bold">(</span>::SCS.SCSMathProgModel, ::Convex.Problem, ::Dict{UInt64,Tuple{Int64,Int64}}, ::Array{Convex.ConicConstr,1}<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:118</span>
+ [4] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:38</span>
+ [5] <span class="ansi-bold">#solve!#24</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::Convex.Problem, ::SCS.SCSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:13</span>
+ [6] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem, ::SCS.SCSSolver<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:12</span>
+ [7] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [8] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [9] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [10] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [11] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[31], in expression starting on line 5
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[31]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5×1 Array{Float64,2}:
+  7.37849 
+ -0.245357
+ -2.79657 
+  1.31364 
+ -2.77834 </pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Fidelity-in-Quantum-Information-Theory---Introduction">Fidelity in Quantum Information Theory - Introduction<a class="anchor-link" href="#Fidelity-in-Quantum-Information-Theory---Introduction">&#182;</a></h2><ul>
+<li><p>This example is inspired from a lecture of John Watrous in the <a href="https://cs.uwaterloo.ca/~watrous/CS766/LectureNotes/08.pdf">course on Theory of Quantum Information</a>.</p>
+</li>
+<li><p>Fidelity is a measure of the <strong>closeness</strong> of two quantum states.</p>
+</li>
+<li><p>The ability to distinguish between the quantum states is equivalent to the ability to distinguish between the classical probability distributions.</p>
+</li>
+<li><p>If fidelity between two states is 1, they are the same quantum state.</p>
+</li>
+</ul>
+<!-- If an experimenter is attempting to determine whether a quantum state is either of two possibilities {\displaystyle \rho } \rho  or {\displaystyle \sigma } \sigma , the most general possible measurement they can make on the state is a POVM, which is described by a set of Hermitian positive semidefinite operators {\displaystyle \{F_{i}\}} \{F_{i}\}. If the state given to the experimenter is {\displaystyle \rho } \rho , they will witness outcome {\displaystyle i} i with probability {\displaystyle p_{i}=\mathrm {Tr} [\rho F_{i}]} p_{i}={\mathrm  {Tr}}[\rho F_{i}], and likewise with probability {\displaystyle q_{i}=\mathrm {Tr} [\sigma F_{i}]} q_{i}={\mathrm  {Tr}}[\sigma F_{i}] for {\displaystyle \sigma } \sigma  -->
+
+<!-- Wikipedia Link -->
+<!-- https://en.wikipedia.org/wiki/Fidelity_of_quantum_states -->
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Application</strong> </li>
+</ul>
+<p><img src="Fidelity.png" alt="Quantum Cryptography"></p>
+<ul>
+<li>The Fidelity between two Hermitian semidefinite matrices P and Q is defined as:</li>
+</ul>
+$$F(P,Q) = {||{P}^{1/2}{Q}^{1/2} ||}_{tr} =  \max\; |trace({P}^{1/2}U{Q}^{1/2})|$$<p>where the trace norm $||.||_{tr}$ is the sum of the singular values, and the maximization goes over the set of all unitary matrices U.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">20</span> <span class="c"># Create the data</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="nb">im</span><span class="o">*</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">);</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">P</span><span class="o">*</span><span class="n">P</span><span class="o">&#39;</span><span class="p">;</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="nb">im</span><span class="o">*</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">);</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">Q</span><span class="o">*</span><span class="n">Q</span><span class="o">&#39;</span><span class="p">;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="n">ComplexVariable</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">);</span> <span class="c"># Declare convex variable</span>
+
+<span class="n">objective</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">real</span><span class="p">(</span><span class="n">trace</span><span class="p">(</span><span class="n">Z</span><span class="o">+</span><span class="n">Z</span><span class="o">&#39;</span><span class="p">));</span>  <span class="c"># Specify the objective</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">constraint</span> <span class="o">=</span> <span class="p">[</span><span class="n">P</span> <span class="n">Z</span><span class="p">;</span><span class="n">Z</span><span class="o">&#39;</span> <span class="n">Q</span><span class="p">]</span> <span class="n">⪰</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="n">maximize</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span><span class="n">constraint</span><span class="p">);</span>
+ 
+<span class="n">solve!</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span> <span class="c"># Solve the problem</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre><span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{Int64}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.CTransposeAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/transpose.jl:114</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [5] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.DiagAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/diag.jl:92</span>
+ [6] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SumAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/sum.jl:48</span>
+ [7] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.RealAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/real_imag.jl:48</span>
+ [8] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.MultiplyAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/multiply_divide.jl:71</span>
+ [9] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [10] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.EqConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/constraints.jl:43</span>
+ [11] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:99</span>
+ [12] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [13] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [14] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:21</span>
+ [15] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [16] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [17] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [18] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [19] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[34], in expression starting on line 4
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{Int64}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.CTransposeAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/transpose.jl:115</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [5] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.DiagAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/diag.jl:92</span>
+ [6] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SumAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/sum.jl:48</span>
+ [7] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.RealAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/real_imag.jl:48</span>
+ [8] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.MultiplyAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/multiply_divide.jl:71</span>
+ [9] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.AdditionAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/add_subtract.jl:108</span>
+ [10] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.EqConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/constraints.jl:43</span>
+ [11] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:99</span>
+ [12] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [13] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [14] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:21</span>
+ [15] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [16] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [17] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [18] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [19] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[34], in expression starting on line 4
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{Int64}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SDPConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/sdp_constraints.jl:52</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:101</span>
+ [5] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [6] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [7] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:21</span>
+ [8] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [9] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [10] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [11] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [12] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[34], in expression starting on line 4
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{Int64}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SDPConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/sdp_constraints.jl:53</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:101</span>
+ [5] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [6] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [7] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:21</span>
+ [8] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [9] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [10] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [11] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [12] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[34], in expression starting on line 4
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{Int64}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.TransposeAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/transpose.jl:51</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.HcatAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/stack.jl:47</span>
+ [5] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.TransposeAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/transpose.jl:44</span>
+ [6] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.RealAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/real_imag.jl:48</span>
+ [7] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.HcatAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/stack.jl:47</span>
+ [8] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.TransposeAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/transpose.jl:44</span>
+ [9] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.HcatAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/stack.jl:47</span>
+ [10] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.TransposeAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/transpose.jl:44</span>
+ [11] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.DotMultiplyAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/multiply_divide.jl:175</span>
+ [12] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.IndexAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/index.jl:72</span>
+ [13] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SDPConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/sdp_constraints.jl:65</span>
+ [14] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:101</span>
+ [15] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [16] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [17] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:21</span>
+ [18] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [19] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [20] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [21] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [22] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[34], in expression starting on line 4
+<span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">Array{T}(::Type{T}, m::Int) is deprecated, use Array{T}(m) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">Array</span><span class="ansi-bold">(</span>::Type{Int64}, ::Int64<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.TransposeAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/transpose.jl:52</span>
+ [4] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.HcatAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/stack.jl:47</span>
+ [5] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.TransposeAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/transpose.jl:44</span>
+ [6] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.RealAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/real_imag.jl:48</span>
+ [7] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.HcatAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/stack.jl:47</span>
+ [8] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.TransposeAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/transpose.jl:44</span>
+ [9] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.HcatAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/stack.jl:47</span>
+ [10] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.TransposeAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/transpose.jl:44</span>
+ [11] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.DotMultiplyAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/multiply_divide.jl:175</span>
+ [12] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.IndexAtom, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/atoms/affine/index.jl:72</span>
+ [13] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.SDPConstraint, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/constraints/sdp_constraints.jl:65</span>
+ [14] <span class="ansi-bold">conic_form!</span><span class="ansi-bold">(</span>::Convex.Problem, ::Convex.UniqueConicForms<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:101</span>
+ [15] <span class="ansi-bold">conic_problem</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/problems.jl:124</span>
+ [16] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:25</span>
+ [17] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:21</span>
+ [18] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [19] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [20] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [21] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [22] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[34], in expression starting on line 4
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>----------------------------------------------------------------------------
+	SCS v1.2.6 - Splitting Conic Solver
+	(c) Brendan O&#39;Donoghue, Stanford University, 2012-2016
+----------------------------------------------------------------------------
+Lin-sys: sparse-direct, nnz in A = 1621
+eps = 1.00e-04, alpha = 1.80, max_iters = 20000, normalize = 1, scale = 5.00
+Variables n = 801, constraints m = 6401
+Cones:	primal zero / dual free vars: 3161
+	sd vars: 3240, sd blks: 1
+Setup time: 9.36e-04s
+----------------------------------------------------------------------------
+ Iter | pri res | dua res | rel gap | pri obj | dua obj | kap/tau | time (s)
+----------------------------------------------------------------------------
+     0|      inf       inf       nan      -inf      -inf       inf  7.72e-03 
+   100| 9.19e-04  2.03e-01  1.68e-02 -6.31e+02 -6.10e+02  0.00e+00  7.74e-01 
+   200| 2.12e-04  4.93e-02  3.03e-03 -6.38e+02 -6.35e+02  0.00e+00  1.97e+00 
+   300| 7.75e-05  1.80e-02  8.87e-04 -6.39e+02 -6.38e+02  0.00e+00  3.27e+00 
+   400| 3.35e-05  7.78e-03  3.14e-04 -6.39e+02 -6.39e+02  0.00e+00  4.45e+00 
+   500| 1.58e-05  3.68e-03  1.25e-04 -6.39e+02 -6.39e+02  0.00e+00  5.56e+00 
+   600| 7.84e-06  1.82e-03  5.42e-05 -6.39e+02 -6.39e+02  0.00e+00  6.72e+00 
+   700| 4.00e-06  9.31e-04  2.48e-05 -6.39e+02 -6.39e+02  0.00e+00  7.89e+00 
+   800| 2.07e-06  4.82e-04  1.18e-05 -6.39e+02 -6.39e+02  0.00e+00  9.06e+00 
+   900| 1.09e-06  2.52e-04  5.77e-06 -6.39e+02 -6.39e+02  0.00e+00  1.03e+01 
+  1000| 5.71e-07  1.33e-04  2.89e-06 -6.39e+02 -6.39e+02  0.00e+00  1.15e+01 
+  1060| 3.89e-07  9.05e-05  1.92e-06 -6.39e+02 -6.39e+02  0.00e+00  1.22e+01 
+----------------------------------------------------------------------------
+Status: Solved
+Timing: Solve time: 1.22e+01s
+	Lin-sys: nnz in L factor: 8823, avg solve time: 4.79e-05s
+	Cones: avg projection time: 1.14e-02s
+----------------------------------------------------------------------------
+Error metrics:
+dist(s, K) = 3.5012e-09, dist(y, K*) = 1.2694e-09, s&#39;y/|s||y| = 1.3591e-12
+|Ax + s - b|_2 / (1 + |b|_2) = 3.8892e-07
+|A&#39;y + c|_2 / (1 + |c|_2) = 9.0454e-05
+|c&#39;x + b&#39;y| / (1 + |c&#39;x| + |b&#39;y|) = 1.9167e-06
+----------------------------------------------------------------------------
+c&#39;x = -639.0161, -b&#39;y = -639.0137
+============================================================================
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre><span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">isnan{T &lt;: Number}(x::AbstractArray{T}) is deprecated, use isnan.(x) instead.</span>
+Stacktrace:
+ [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
+ [2] <span class="ansi-bold">isnan</span><span class="ansi-bold">(</span>::Array{Float64,1}<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
+ [3] <span class="ansi-bold">populate_solution!</span><span class="ansi-bold">(</span>::SCS.SCSMathProgModel, ::Convex.Problem, ::Dict{UInt64,Tuple{Int64,Int64}}, ::Array{Convex.ConicConstr,1}<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:118</span>
+ [4] <span class="ansi-bold">#solve!#25</span><span class="ansi-bold">(</span>::Bool, ::Bool, ::Bool, ::Function, ::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:38</span>
+ [5] <span class="ansi-bold">solve!</span><span class="ansi-bold">(</span>::Convex.Problem<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Convex/src/solution.jl:21</span>
+ [6] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:515</span>
+ [7] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/Compat/src/Compat.jl:407</span>
+ [8] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/execute_request.jl:154</span>
+ [9] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/ayush/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [10] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[34], in expression starting on line 4
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
